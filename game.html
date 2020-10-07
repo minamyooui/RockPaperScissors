@@ -66,10 +66,45 @@
             return outcome;
         }
 
-        const playerSelection = 'RoCk';
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(computerSelection);
+        function game() {
+            let winner;
+            let ps, cs;
+            let outcome;
+            let pScore=0, cScore=0;
+            for (let i = 0; i < 5; i++) {
+                ps = prompt('Please make your choice', null);
+                cs = computerPlay();
+                outcome = playRound(ps, cs);
+                if (outcome.includes('Win')) {
+                    pScore++;
+                    console.log('Player wins a round!');
+                    console.log('It is currently '+ pScore + ' to '+ cScore + ' !');
+                } else if (outcome.includes('Lose')) {
+                    cScore++;
+                    console.log('Computer wins a round!');
+                    console.log('It is currently '+ pScore + ' to '+ cScore + ' !');
+                } else if (outcome.includes('Draw')) {
+                    console.log('Draw!');
+                    console.log('It is currently '+ pScore + ' to '+ cScore + ' !');
+                } else {
+                    console.log('Error!');
+                }
+            }
+            if (pScore > cScore) {
+                console.log('The score is ' + pScore + ' to ' + cScore + ' !');
+                console.log('Player wins!');
+            } else if (pScore < cScore) {
+                console.log('The score is ' + pScore + ' to ' + cScore + ' !');
+                console.log('Computer wins!');
+            } else {
+                console.log('The score is ' + pScore + ' to ' + cScore + ' !');
+                console.log("It's a Draw!");
+            }   
+        }
+
+        
+
+       
     </script>
 </body>
 </html>
